@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function BotMessage({ fetchMessage }) {
   const [isLoading, setLoading] = useState(true);
@@ -15,7 +15,7 @@ export default function BotMessage({ fetchMessage }) {
 
   return (
     <div className="message-container">
-      <div className="bot-message">{isLoading ? "..." : message}</div>
+      <div className="bot-message" dangerouslySetInnerHTML={{ __html: isLoading ? "..." : `<div class="text-left">${message}</div>` }}></div>
     </div>
   );
 }
