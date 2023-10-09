@@ -1,7 +1,10 @@
+# Simple React Chatbot Client for [chatOpenData](https://github.com/jasonreed7/nasa-space-apps-2023-chat-open-data-backend) (NASA Space Apps Challenge 2023 project)
+
 Forked and slightly modified from https://github.com/antobonfiglio/react-chatbot-ui to work with our NASA space apps hackathon project
 
-# Simple React Chatbot Client
+## Running
 
+Run our [backend project](https://github.com/jasonreed7/nasa-space-apps-2023-chat-open-data-backend). Then, run this project with `npm start`. The UI will be served on [localhost:3000](http://localhost:3000).
 
 ## Screenshot
 
