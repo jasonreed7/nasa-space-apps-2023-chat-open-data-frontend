@@ -1,3 +1,5 @@
+Forked and slightly modified from https://github.com/antobonfiglio/react-chatbot-ui to work with our NASA space apps hackathon project
+
 # Simple React Chatbot Client
 
 

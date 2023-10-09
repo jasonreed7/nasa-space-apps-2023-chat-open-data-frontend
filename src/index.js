@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 import BotMessage from "./components/BotMessage";
-import UserMessage from "./components/UserMessage";
-import Messages from "./components/Messages";
 import Input from "./components/Input";
+import Messages from "./components/Messages";
+import UserMessage from "./components/UserMessage";
 
 import API from "./ChatbotAPI";
 
-import "./styles.css";
 import Header from "./components/Header";
+import "./styles.css";
 
 function Chatbot() {
   const [messages, setMessages] = useState([]);
@@ -19,19 +19,26 @@ function Chatbot() {
       setMessages([
         <BotMessage
           key="0"
-          fetchMessage={async () => await API.GetChatbotResponse("hi")}
-        />
+          fetchMessage={() => "Hi, what kind of datasets are you looking for?"}
+        />,
       ]);
     }
     loadWelcomeMessage();
   }, []);
 
-  const send = async text => {
+  const send = async (text) => {
     const newMessages = messages.concat(
       <UserMessage key={messages.length + 1} text={text} />,
       <BotMessage
         key={messages.length + 2}
-        fetchMessage={async () => await API.GetChatbotResponse(text)}
+        fetchMessage={async () => {
+          const resp = await API.GetChatbotResponse(text);
+
+          let message = await resp.text();
+          console.log(message);
+          message = message.replaceAll("\\n", "<br />");
+          return message;
+        }}
       />
     );
     setMessages(newMessages);
